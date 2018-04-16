@@ -54,3 +54,24 @@ heronD 0 a = a
 heronD n a
 	| n > 0	= (x + a / x) / 2
 	where x = heronD (n-1) a
+
+
+-- bubbleSort typ 1
+bubbleSortList :: [Int] -> [Int]
+bubbleSortList n =  case  bSortList n of
+										m  | m == n    -> m
+											 | otherwise -> bubbleSortList m
+										where bSortList (x:x2:xs) | x > x2 = x2:(bSortList (x:xs))
+																							| otherwise = x:(bSortList (x2:xs))
+													bSortList n = n
+-- bubbleSort typ 2
+buSoList :: [Int] -> [Int]
+buSoList [] = []
+buSoList (x:x2:xs) =
+		let sorted = if x2 < x
+				then x2 : buSoList (x:xs)
+				else x  : buSoList (x2:xs)
+		in (buSoList $ init sorted) ++ [last sorted] -- $ kann ebenfalls durch Klammern ersetzt werden
+buSoList xs = xs
+
+

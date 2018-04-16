@@ -19,7 +19,7 @@ square n
 
 -- sum of a list
 sumList :: [Int] -> Int
-sumList [] 		= 0
+sumList [] 			= 0
 sumList (x:xs) 	= x + (sumList xs)
 
 -- foldList
@@ -31,16 +31,13 @@ foldList _ []        = error "foldList undefined on empty []"
 
 -- mapList
 mapList :: (Int -> Int) -> [Int] -> [Int]
-mapList f [] 		= []
+mapList f [] 			= []
 mapList f (x:xs) 	= f x : mapList f xs
 -- die Eingabe von quadratic funktioniert nicht
 
 -- test function
 tableInt :: (Int -> Int) -> [Int] -> String
-tableInt f (x:xs) = show (x) ++ " : " ++ show (f(x))
--- shows the answer of the first numbers
-table :: ([Int] -> Int) -> [[Int]] -> String
-table f xs
-	| xs == [] 	= ""
-	| otherwise = tableInt (head xs) ++ "\n" ++
-								table f (tail xs)
+tableInt f xs
+  	| xs == [] = ""
+		| otherwise = show (head xs) 	++ " : " ++ show (f(head xs)) ++ "\n" ++
+										tableInt f (tail xs)
